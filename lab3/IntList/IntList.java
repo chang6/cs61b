@@ -228,5 +228,24 @@ public class IntList {
         out.format(")");
         return out.toString();
     }
+
+    /**
+     * Returns the reverse of the given IntList.
+     * This method is destructive. If given null
+     * as an input, returns null.
+     */
+    public static IntList reverse(IntList A) {
+        IntList nextNodeToAdd = A;
+        IntList frontOfReversed = null;
+        while (nextNodeToAdd != null) {
+            IntList remainderOfOriginal = nextNodeToAdd.rest;
+            nextNodeToAdd.rest = frontOfReversed;
+            frontOfReversed = nextNodeToAdd;
+            nextNodeToAdd = remainderOfOriginal;
+        }
+        A = frontOfReversed;
+        return A;
+
+    }
 }
 
